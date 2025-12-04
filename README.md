@@ -1,5 +1,6 @@
 # Attentionproject
 Rahul kuduru 700763240
+This file contains both readme files for question1&question2
 ## **📌 Project Overview**
 
 This project implements the **Scaled Dot-Product Attention** mechanism using **NumPy**, following the formula used in Transformer models.
@@ -99,3 +100,87 @@ def scaled_dot_product_attention(Q, K, V):
     context_vector = np.dot(attention_weights, V)
     return attention_weights, context_vector
 ```
+
+Question2)
+
+
+## **📘 Overview**
+This file implements a **simplified Transformer Encoder Block** using **PyTorch**, following the architecture introduced in the paper  
+**"Attention Is All You Need" (Vaswani et al., 2017)**.
+
+The encoder block contains:
+- Multi-Head Self-Attention  
+- Feed-Forward Network (FFN)  
+- Residual Connections (Add)  
+- Layer Normalization (Norm)  
+
+All components are implemented using PyTorch modules.
+
+---
+
+## **🧩 Components Implemented**
+
+### **1. Multi-Head Self-Attention**
+Uses:
+```python
+nn.MultiheadAttention(embed_dim=128, num_heads=8, batch_first=True)
+````
+
+### **2. Feed-Forward Network**
+
+A two-layer network with ReLU:
+
+```python
+Linear(128 → 512 → 128)
+```
+
+### **3. Add & Norm**
+
+Residual connections + LayerNorm are applied after:
+
+* Multi-head attention
+* Feed-forward network
+
+---
+
+## **⚙️ Model Dimensions**
+
+* `d_model = 128`
+* `num_heads = 8`
+* Feed-forward expands to `4 * d_model = 512`
+* Input shape tested: **[batch=32, seq_len=10, d_model=128]**
+
+---
+
+## **🚀 How to Run**
+
+### **1. Install PyTorch**
+
+```bash
+pip install torch
+```
+
+### **2. Run the encoder block test**
+
+Inside the project folder:
+
+```bash
+python3 transformer_encoder.py
+```
+
+### **Expected Output**
+
+```
+Output shape: torch.Size([32, 10, 128])
+```
+
+This confirms that:
+
+* The encoder block works correctly
+* Residual & normalization layers preserve shape
+* Multi-head attention and FFN are functioning
+
+---
+
+## **📁 File Included**
+
